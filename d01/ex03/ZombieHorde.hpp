@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ZombieEvent.hpp                                    :+:      :+:    :+:   */
+/*   ZombieHorde.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmanamel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: qmanamel <qmanamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/05 16:28:33 by qmanamel          #+#    #+#             */
-/*   Updated: 2018/06/06 08:28:39 by qmanamel         ###   ########.fr       */
+/*   Created: 2018/06/06 09:13:11 by qmanamel          #+#    #+#             */
+/*   Updated: 2018/06/06 10:24:18 by qmanamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_EVENT_HPP
-#define ZOMBIE_EVENT_HPP
-
-#include <iostream>
 #include "Zombie.hpp"
 
-class ZombieEvent {
+class ZombieHorde {
 	public:
-		ZombieEvent(void);
-		~ZombieEvent(void);
-		void setZombieType(std::string _type);
-		Zombie* newZombie(std::string _name);
+		ZombieHorde(int n);
+		~ZombieHorde(void);
 		Zombie* randomChump();
+		void	announce(void);
 	private:
-		std::string type;
+		Zombie*	_zombies;
+		int length;
 };
-#endif

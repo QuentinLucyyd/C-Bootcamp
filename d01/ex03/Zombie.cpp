@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmanamel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: qmanamel <qmanamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 16:28:00 by qmanamel          #+#    #+#             */
-/*   Updated: 2018/06/06 08:24:12 by qmanamel         ###   ########.fr       */
+/*   Updated: 2018/06/06 09:42:31 by qmanamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,16 @@
 #include <iostream>
 
 Zombie::Zombie(std::string _name, std::string _type) : name(_name), type(_type) {return;}
+Zombie::Zombie() {return;}
 Zombie::~Zombie(void){return;};
+
+void Zombie::setType(std::string _type) {
+	Zombie::type = _type;
+}
+
+void Zombie::setName(std::string _name) {
+	Zombie::name = _name;
+}
 
 void Zombie::announce(void) {
 	std::cout << "<" << Zombie::name;

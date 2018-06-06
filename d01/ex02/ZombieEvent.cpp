@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ZombieEvent.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmanamel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: qmanamel <qmanamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 16:28:24 by qmanamel          #+#    #+#             */
-/*   Updated: 2018/06/05 16:28:26 by qmanamel         ###   ########.fr       */
+/*   Updated: 2018/06/06 14:24:05 by qmanamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ Zombie* ZombieEvent::newZombie(std::string _name) {
 }
 
 Zombie* ZombieEvent::randomChump() {
-    ZombieEvent _event;
     Zombie*     _randomZombie;
     std::string names[8] = {"David", "Jhon", "Steven", "Poppy", "Pony", "Rob", "Bobby", "Jimmy"};
 

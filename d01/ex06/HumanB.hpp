@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qmanamel <qmanamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/05 16:28:43 by qmanamel          #+#    #+#             */
-/*   Updated: 2018/06/06 14:57:50 by qmanamel         ###   ########.fr       */
+/*   Created: 2018/06/06 13:17:13 by qmanamel          #+#    #+#             */
+/*   Updated: 2018/06/06 15:03:54 by qmanamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
-#include "ZombieEvent.hpp"
+#ifndef HUMAN_B_HPP
+#define HUMAN_B_HPP
 
-int main(){
-    ZombieEvent event;
-    Zombie      *_zombie;
-    Zombie      *_zomb;
+#include "Weapon.hpp"
 
-    event.setZombieType("Tall");
-    _zombie = event.newZombie("Quentin");
-    _zombie->announce();
-    _zomb = event.randomChump();
-    delete _zomb;
-    delete _zombie;
-}
+class HumanB{
+    public:
+        HumanB(std::string _name);
+        ~HumanB(void);
+        void attack();
+        void setWeapon(Weapon&);
+    private:
+        Weapon* _weapon;
+        std::string name;
+};
+#endif

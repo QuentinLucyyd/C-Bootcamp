@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qmanamel <qmanamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/05 16:28:43 by qmanamel          #+#    #+#             */
-/*   Updated: 2018/06/06 14:57:50 by qmanamel         ###   ########.fr       */
+/*   Created: 2018/06/06 11:04:12 by qmanamel          #+#    #+#             */
+/*   Updated: 2018/06/06 14:20:48 by qmanamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
-#include "ZombieEvent.hpp"
+#include "Brain.hpp"
+#include <sstream>
 
-int main(){
-    ZombieEvent event;
-    Zombie      *_zombie;
-    Zombie      *_zomb;
+Brain::Brain(void){
+    std::stringstream   adr;
+    adr << this;
+    this->address = adr.str();
+    return ;
+}
 
-    event.setZombieType("Tall");
-    _zombie = event.newZombie("Quentin");
-    _zombie->announce();
-    _zomb = event.randomChump();
-    delete _zomb;
-    delete _zombie;
+Brain::~Brain(void){return ;}
+
+std::string Brain::identify(void) const{
+    return address;
 }

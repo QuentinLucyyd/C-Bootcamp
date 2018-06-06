@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qmanamel <qmanamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/05 16:28:43 by qmanamel          #+#    #+#             */
-/*   Updated: 2018/06/06 14:57:50 by qmanamel         ###   ########.fr       */
+/*   Created: 2018/06/06 13:02:59 by qmanamel          #+#    #+#             */
+/*   Updated: 2018/06/06 15:15:24 by qmanamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
-#include "ZombieEvent.hpp"
+#include "HumanA.hpp"
+#include "Weapon.hpp"
 
-int main(){
-    ZombieEvent event;
-    Zombie      *_zombie;
-    Zombie      *_zomb;
+HumanA::HumanA(std::string s, Weapon& w): _name(s), _weapon(w){return ;}
+HumanA::~HumanA(void){return ;}
 
-    event.setZombieType("Tall");
-    _zombie = event.newZombie("Quentin");
-    _zombie->announce();
-    _zomb = event.randomChump();
-    delete _zomb;
-    delete _zombie;
+void HumanA::attack(void)
+{
+    std::cout << HumanA::_name << " attacks with his " << HumanA::_weapon.getType();
+    std::cout << std::endl;
+    return ;
 }

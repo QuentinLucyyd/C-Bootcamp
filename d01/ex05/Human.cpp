@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Human.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qmanamel <qmanamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/05 16:28:43 by qmanamel          #+#    #+#             */
-/*   Updated: 2018/06/06 14:57:50 by qmanamel         ###   ########.fr       */
+/*   Created: 2018/06/06 11:04:35 by qmanamel          #+#    #+#             */
+/*   Updated: 2018/06/06 14:20:24 by qmanamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
-#include "ZombieEvent.hpp"
+#include "Human.hpp"
+#include <iostream>
 
-int main(){
-    ZombieEvent event;
-    Zombie      *_zombie;
-    Zombie      *_zomb;
+Human::Human(void){return ;}
+Human::~Human(void){return ;}
 
-    event.setZombieType("Tall");
-    _zombie = event.newZombie("Quentin");
-    _zombie->announce();
-    _zomb = event.randomChump();
-    delete _zomb;
-    delete _zombie;
+std::string Human::identify(void) const{
+    return Human::_brain.identify();
+}
+
+Brain   Human::getBrain(void) {
+    return Human::_brain;
 }

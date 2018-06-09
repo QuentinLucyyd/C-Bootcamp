@@ -27,6 +27,7 @@ public:
     GameEntity& operator=(GameEntity const &_rhs);
     std::string getDisplay(void);
     void        notTail(WINDOW *win);
+    void        bullet(WINDOW *win);
     void        setX(int x);
     void        setY(int y);
     int         getX(void);

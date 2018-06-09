@@ -21,6 +21,8 @@
         "streambuf": "cpp",
         "type_traits": "cpp",
         "typeinfo": "cpp",
-        "cmath": "cpp"
+        "cmath": "cpp",
+        "__config": "cpp",
+        "__nullptr": "cpp"
     }
 }

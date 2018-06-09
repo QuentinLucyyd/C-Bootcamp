@@ -44,6 +44,15 @@ void        GameEntity::notTail(WINDOW *win){
     }
 }
 
+// void        GameEntity::bullet(WINDOW *win){
+//     int     i;
+
+//     i = 0;
+//     while (i < 1) {
+//         mvwaddch(win, this->_pos_y, this->_pos_x, '*');
+//     }
+// }
+
 void        GameEntity::setX(int x) {this->_pos_x = x;}
 void        GameEntity::setY(int y) {this->_pos_y = y;}
 int         GameEntity::getX(void){return this->_pos_x;}

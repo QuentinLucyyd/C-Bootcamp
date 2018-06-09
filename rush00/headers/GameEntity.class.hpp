@@ -37,5 +37,8 @@ protected:
     std::string _display;
 };
 
-void    *startGame(void *win);    
+void    startGame(WINDOW *win);    
 #endif
+
+//Defualt Class for each Game Entity
+// Containng Co-ordinates and Display Charecter

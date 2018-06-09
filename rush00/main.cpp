@@ -41,8 +41,6 @@ int     main(int argc, char *argv[]) {
         initialize();
         int x, y;
 
-        pthread_t startGameThread;
-        pthread_t screneryThread;
         getmaxyx(stdscr, y, x);
         score = newwin(y, x, 0,0);
         wresize(stdscr, y - 5, x);
@@ -58,7 +56,7 @@ int     main(int argc, char *argv[]) {
         if (k == 27) {
             endwin();
         } else {
-            pthread_create(&startGameThread, NULL, startGame, &stdscr);
+            startGame(stdscr);
         }
     }
      

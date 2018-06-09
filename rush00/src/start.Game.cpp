@@ -6,7 +6,7 @@
 /*   By: qmanamel <qmanamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 21:30:39 by root              #+#    #+#             */
-/*   Updated: 2018/06/09 12:59:43 by qmanamel         ###   ########.fr       */
+/*   Updated: 2018/06/09 13:01:29 by qmanamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,6 @@ void    moveUp(WINDOW *win, Player &_player) {
 void    moveDown(WINDOW *win, Player &_player, int max_y) {
     int curY = _player.getY() + 2;
             if (curY < max_y) {
-                mvwaddch(win, _player.getY(), _player.getX(), ' ');
-                mvwaddch(win, _player.getY(), _player.getX() + 1, ' ');
-                mvwaddch(win, _player.getY(), _player.getX() + 2, ' ');
-                mvwaddch(win, _player.getY(), _player.getX() + 3, ' ');
-                mvwaddch(win, _player.getY(), _player.getX() + 4, ' ');
                 _player.setY(curY);
                 box(win, '+', '+');
                 mvprintw(_player.getY(), _player.getX(), _player.getDisplay().c_str());

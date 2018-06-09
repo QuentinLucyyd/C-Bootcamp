@@ -6,7 +6,7 @@
 /*   By: qmanamel <qmanamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 21:04:51 by root              #+#    #+#             */
-/*   Updated: 2018/06/09 12:05:06 by qmanamel         ###   ########.fr       */
+/*   Updated: 2018/06/09 12:59:59 by qmanamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,15 @@ GameEntity& GameEntity::operator=(GameEntity const &_rhs){
 
 std::string GameEntity::getDisplay(void){
     return this->_display;
+}
+
+void        GameEntity::notTail(WINDOW *win){
+    int     i;
+
+    i = -1;
+    while (++i < 5) {
+        mvwaddch(win, this->_pos_y, this->_pos_x + i, ' ');
+    }
 }
 
 void        GameEntity::setX(int x) {this->_pos_x = x;}

@@ -6,7 +6,7 @@
 /*   By: qmanamel <qmanamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 21:30:39 by root              #+#    #+#             */
-/*   Updated: 2018/06/09 12:22:27 by qmanamel         ###   ########.fr       */
+/*   Updated: 2018/06/09 12:59:43 by qmanamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,11 +107,7 @@ void    startGame(WINDOW *win) {
     keypad(win, TRUE);
     _enemy.setY(1);
     while(1) {
-        mvwaddch(win, _enemy.getY(), _enemy.getX(), ' ');
-        mvwaddch(win, _enemy.getY(), _enemy.getX() + 1, ' ');
-        mvwaddch(win, _enemy.getY(), _enemy.getX() + 2, ' ');
-        mvwaddch(win, _enemy.getY(), _enemy.getX() + 3, ' ');
-        mvwaddch(win, _enemy.getY(), _enemy.getX() + 4, ' ');
+        _enemy.notTail(win);
         _enemy.setX(_enemy.randomXValue(max_x));
         _enemy.moveEnemy(win, max_x, max_y);
         keyPressed = wgetch(win);

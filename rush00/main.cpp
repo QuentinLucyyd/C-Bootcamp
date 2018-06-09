@@ -6,7 +6,7 @@
 /*   By: qmanamel <qmanamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 19:18:47 by qmanamel          #+#    #+#             */
-/*   Updated: 2018/06/09 09:44:08 by qmanamel         ###   ########.fr       */
+/*   Updated: 2018/06/09 14:18:32 by qmanamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int     main(int argc, char *argv[]) {
             endwin();
         } else {
             startGame(stdscr);
+            endwin();
         }
     }
      

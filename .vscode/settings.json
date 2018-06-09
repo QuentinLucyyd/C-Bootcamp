@@ -13,6 +13,9 @@
         "string_view": "cpp",
         "atomic": "cpp",
         "ios": "cpp",
-        "system_error": "cpp"
+        "system_error": "cpp",
+        "__locale": "cpp",
+        "__string": "cpp",
+        "iterator": "cpp"
     }
 }

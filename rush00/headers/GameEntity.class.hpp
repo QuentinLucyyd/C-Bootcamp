@@ -6,7 +6,7 @@
 /*   By: qmanamel <qmanamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 21:03:59 by root              #+#    #+#             */
-/*   Updated: 2018/06/09 12:56:36 by qmanamel         ###   ########.fr       */
+/*   Updated: 2018/06/09 13:20:35 by qmanamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ public:
     ~GameEntity(void);
     GameEntity& operator=(GameEntity const &_rhs);
     std::string getDisplay(void);
-    void        notTail(WINDOW *win);
+    void        notTail(WINDOW *win, int width);
     void        setX(int x);
     void        setY(int y);
     int         getX(void);

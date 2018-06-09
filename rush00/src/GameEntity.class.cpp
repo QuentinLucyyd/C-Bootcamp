@@ -6,7 +6,7 @@
 /*   By: qmanamel <qmanamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 21:04:51 by root              #+#    #+#             */
-/*   Updated: 2018/06/09 12:59:59 by qmanamel         ###   ########.fr       */
+/*   Updated: 2018/06/09 13:22:49 by qmanamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,12 @@ std::string GameEntity::getDisplay(void){
     return this->_display;
 }
 
-void        GameEntity::notTail(WINDOW *win){
+void        GameEntity::notTail(WINDOW *win, int width){
     int     i;
 
     i = -1;
-    while (++i < 5) {
+    mvwaddch(win, this->_pos_y, this->_pos_x - 1, ' ');
+    while (++i < width) {
         mvwaddch(win, this->_pos_y, this->_pos_x + i, ' ');
     }
 }

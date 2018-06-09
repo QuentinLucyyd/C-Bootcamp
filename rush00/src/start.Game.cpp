@@ -6,7 +6,7 @@
 /*   By: qmanamel <qmanamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 21:30:39 by root              #+#    #+#             */
-/*   Updated: 2018/06/09 11:46:02 by qmanamel         ###   ########.fr       */
+/*   Updated: 2018/06/09 12:22:27 by qmanamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,12 @@
 void    moveLeft(WINDOW *win, Player &_player) {
     int curX = _player.getX() - 2;
     if (curX > 0) {
+        mvwaddch(win, _player.getY(), _player.getX(), ' ');
+        mvwaddch(win, _player.getY(), _player.getX() + 1, ' ');
+        mvwaddch(win, _player.getY(), _player.getX() + 2, ' ');
+        mvwaddch(win, _player.getY(), _player.getX() + 3, ' ');
+        mvwaddch(win, _player.getY(), _player.getX() + 4, ' ');
         _player.setX(curX);
-        clear();
         box(win, '+', '+');
         mvprintw(_player.getY(), _player.getX(), _player.getDisplay().c_str());
         refresh();
@@ -28,8 +32,12 @@ void    moveLeft(WINDOW *win, Player &_player) {
 void    moveRight(WINDOW *win, Player &_player, int max_x) {
     int curX = _player.getX() + 2;
             if (curX < max_x - 4) {
+                mvwaddch(win, _player.getY(), _player.getX(), ' ');
+                mvwaddch(win, _player.getY(), _player.getX() + 1, ' ');
+                mvwaddch(win, _player.getY(), _player.getX() + 2, ' ');
+                mvwaddch(win, _player.getY(), _player.getX() + 3, ' ');
+                mvwaddch(win, _player.getY(), _player.getX() + 4, ' ');
                 _player.setX(curX);
-                clear();
                 box(win, '+', '+');
                 mvprintw(_player.getY(), _player.getX(), _player.getDisplay().c_str());
                 refresh();
@@ -39,9 +47,13 @@ void    moveRight(WINDOW *win, Player &_player, int max_x) {
 void    moveUp(WINDOW *win, Player &_player) {
     int curY = _player.getY() - 2;
             if (curY - 1 > 0) {
+                mvwaddch(win, _player.getY(), _player.getX(), ' ');
+                mvwaddch(win, _player.getY(), _player.getX() + 1, ' ');
+                mvwaddch(win, _player.getY(), _player.getX() + 2, ' ');
+                mvwaddch(win, _player.getY(), _player.getX() + 3, ' ');
+                mvwaddch(win, _player.getY(), _player.getX() + 4, ' ');
                 _player.setY(curY);
-                clear();
-                box(win, '+', '+');
+                //box(win, '+', '+');
                 mvprintw(_player.getY(), _player.getX(), _player.getDisplay().c_str());
                 refresh();
             }
@@ -50,8 +62,12 @@ void    moveUp(WINDOW *win, Player &_player) {
 void    moveDown(WINDOW *win, Player &_player, int max_y) {
     int curY = _player.getY() + 2;
             if (curY < max_y) {
+                mvwaddch(win, _player.getY(), _player.getX(), ' ');
+                mvwaddch(win, _player.getY(), _player.getX() + 1, ' ');
+                mvwaddch(win, _player.getY(), _player.getX() + 2, ' ');
+                mvwaddch(win, _player.getY(), _player.getX() + 3, ' ');
+                mvwaddch(win, _player.getY(), _player.getX() + 4, ' ');
                 _player.setY(curY);
-                clear();
                 box(win, '+', '+');
                 mvprintw(_player.getY(), _player.getX(), _player.getDisplay().c_str());
                 refresh();
@@ -89,8 +105,13 @@ void    startGame(WINDOW *win) {
     box(win, '+', '+');
     mvprintw(_player.getY(), _player.getX(), _player.getDisplay().c_str());
     keypad(win, TRUE);
+    _enemy.setY(1);
     while(1) {
-        _enemy.setY(1);
+        mvwaddch(win, _enemy.getY(), _enemy.getX(), ' ');
+        mvwaddch(win, _enemy.getY(), _enemy.getX() + 1, ' ');
+        mvwaddch(win, _enemy.getY(), _enemy.getX() + 2, ' ');
+        mvwaddch(win, _enemy.getY(), _enemy.getX() + 3, ' ');
+        mvwaddch(win, _enemy.getY(), _enemy.getX() + 4, ' ');
         _enemy.setX(_enemy.randomXValue(max_x));
         _enemy.moveEnemy(win, max_x, max_y);
         keyPressed = wgetch(win);
@@ -110,6 +131,7 @@ void    startGame(WINDOW *win) {
             default:
                 break;
         }
+        usleep(100000);
         refresh();
     }
 }

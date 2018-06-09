@@ -6,7 +6,7 @@
 /*   By: qmanamel <qmanamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/09 11:14:24 by qmanamel          #+#    #+#             */
-/*   Updated: 2018/06/09 11:37:34 by qmanamel         ###   ########.fr       */
+/*   Updated: 2018/06/09 12:21:16 by qmanamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,10 @@ int  Enemy::randomXValue(int max_x) {
 }
 
 void Enemy::moveEnemy(WINDOW *win, int max_x, int max_y) {
-    if (this->getY() > max_y) {
-        this->setY(this->_pos_y + 2);
-    }
+    // if (this->getY() > 0) {
+    //     this->setY(this->_pos_y + 2);
+    // }
+    this->setY(this->_pos_y + 1);
     mvwprintw(win, this->_pos_y, this->_pos_x, this->_display.c_str());
     refresh();
 }

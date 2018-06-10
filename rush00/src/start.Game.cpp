@@ -6,7 +6,7 @@
 /*   By: qmanamel <qmanamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 21:30:39 by root              #+#    #+#             */
-/*   Updated: 2018/06/10 08:48:36 by qmanamel         ###   ########.fr       */
+/*   Updated: 2018/06/10 13:12:47 by qmanamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "../headers/EnemyHorde.class.hpp"
 #include "../headers/Star.class.hpp"
 #include "../headers/Bullet.class.hpp"
-
+#include "../headers/Game.class.hpp"
 #include <string>
 
 void    moveLeft(WINDOW *win, Player &_player) {
@@ -65,7 +65,7 @@ int    checkCollision(WINDOW *win, Player &_player) {
     chtype center = mvwinch(win, _player.getY() - 1, _player.getX() + 2);
     char n_left = (left_wing & A_CHARTEXT);
     char n_right = (right_wing & A_CHARTEXT);
-    char n_center = (right_wing & A_CHARTEXT);
+    char n_center = (center & A_CHARTEXT);
     if (n_left == ' ' && n_right == ' ' && n_center == ' '){
         //mvwaddstr(win, 5, 5, "No Collission");
         return 1;
@@ -85,16 +85,31 @@ int    checkCollision(WINDOW *win, Player &_player) {
     return 1;
 }
 
+// void    addBullet(WINDOW *win, int cur_bullet, Player &_player) {
+//     _bullets[cur_bullet].setX(_player.getX() + 3);
+//     _bullets[cur_bullet].setY(_player.getY() - 1);
+//     mvwprintw(win,  _bullets[cur_bullet].getY(),  _bullets[cur_bullet].getX(),  _bullets[cur_bullet].getDisplay().c_str());
+// }
+
+// void    moveBullets(WINDOW *win, int _bullet){
+//     int i = -1;
+//     while (++i < _bullet) {
+//         // mvwprintw(win, 2, 2, std::to_string( _bullets[i]->getX()).c_str());
+//         // mvwprintw(win, 4, 4, std::to_string( _bullets[i]->getY()).c_str());
+//         if (_bullets[_bullet].getY() > 0) {
+//             mvwaddch(win, _bullets[_bullet].getY(), _bullets[_bullet].getX(), ' ');
+//             _bullets[_bullet].setY(_bullets[_bullet].getY() - 2);
+//             mvwprintw(win, _bullets[_bullet].getY(),  _bullets[_bullet].getX(),  _bullets[_bullet].getDisplay().c_str());
+//         }
+//     }
+// }
+
 void    startGame(WINDOW *win, WINDOW *score) {
-    int gameloop = 1;
+    Game    GameOperator;
     int Frame = 0;
     Player  _def;
     Player& _player(_def);
-    Enemy _defenemy;
-    Enemy& _enemy(_defenemy);
-    Enemy _enemy2;
-    Enemy *Enemies = new Enemy[5];
-    nodelay(win, true);
+    Enemy   *Enemies = new Enemy[5];
     int     max_y;
     int     max_x;
     int     keyPressed;
@@ -107,13 +122,7 @@ void    startGame(WINDOW *win, WINDOW *score) {
     std::cout << "m/" << max_x << "y/" << max_y;
     box(win, '+', '+');
     mvwprintw(win,_player.getY(), _player.getX(), _player.getDisplay().c_str());
-    keypad(win, TRUE);
-     _enemy.setX(_enemy.randomXValue(max_x));
-    // _enemy2.setX(_enemy2.randomXValue(max_x));
-    //mvwprintw(win, 1, 1, std::to_string(_enemy.getX()).c_str());
-    //mvwprintw(win, 5, 1, std::to_string(_enemy2.getX()).c_str());
     int p = -1;
-
     while (++p < 10) {
         int randomx = rand() % max_x - 1;
         int randomy = rand() % max_y;
@@ -127,7 +136,7 @@ void    startGame(WINDOW *win, WINDOW *score) {
         _stars[st].setX(randomx);
         _stars[st].setY(randomy);
     }
-    while(gameloop == 1) {
+    while(_player.isAlive()) {
         int st = -1;
         while(++st < 50) {
             mvwaddch(win, _stars[st].getY(), _stars[st].getX(), ' ');
@@ -136,23 +145,15 @@ void    startGame(WINDOW *win, WINDOW *score) {
             }
             _stars[st].setY(_stars[st].getY() + 1);
             mvwaddch(win, _stars[st].getY(), _stars[st].getX(), '.');                       
-            //_stars[st].moveStar(win, 1);
         }
         _enemies.moveEnemies(win, max_x, max_y);
-        //_enemy.moveEnemy(win, max_x, max_y, 1);
-        //_enemy2.moveEnemy(win, max_x, max_y, 1);
-        // p = -1;
-        // while (++p < 5) {
-        //     Enemies[p].moveEnemy(win, max_x, max_y, 1);
-        // }
         keyPressed = wgetch(win);
         checkCollision(win,_player);
-        //mvwprintw(win, 5, 1, std::to_string(_player.isAlive()).c_str());
-        //mvwprintw(win, 6, 1, std::to_string(_player.getHP()).c_str());
-        //mvwprintw(win, 20, 1, std::to_string(max_x).c_str());
-        if (_player.isAlive()) {
+        GameOperator.moveBullets(win);
+
             switch(keyPressed) {
                 case 'z':
+                    GameOperator.addBullet(win,_player);
                     break;
                 case KEY_UP:
                     moveUp(win, _player);
@@ -169,7 +170,6 @@ void    startGame(WINDOW *win, WINDOW *score) {
                 default:
                     break;
             }   
-        }
         Frame++;
         mvwprintw(score, 4, 2, "Frames Rendered: ");
         mvwprintw(score, 4, 19, std::to_string(Frame).c_str());
@@ -180,4 +180,5 @@ void    startGame(WINDOW *win, WINDOW *score) {
         wrefresh(win);
         wrefresh(score);
     }
+    _player.notTail(win, 5);
 }

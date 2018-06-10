@@ -6,7 +6,7 @@
 /*   By: qmanamel <qmanamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/09 11:12:16 by qmanamel          #+#    #+#             */
-/*   Updated: 2018/06/09 14:31:33 by qmanamel         ###   ########.fr       */
+/*   Updated: 2018/06/10 14:00:14 by qmanamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ public:
     ~Enemy(void);
     Enemy &operator=(Enemy const &_new);
     int   randomXValue(int max_x);
+    bool  checkBullet(WINDOW *win);
     void  moveEnemy(WINDOW *win, int max_x, int max_y, int speed);
+private:
+    bool    isAlive;
 };
 
 #endif

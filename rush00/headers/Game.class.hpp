@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Bullet.class.hpp                                   :+:      :+:    :+:   */
+/*   Game.class.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qmanamel <qmanamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/09 20:58:35 by root              #+#    #+#             */
-/*   Updated: 2018/06/10 13:03:05 by qmanamel         ###   ########.fr       */
+/*   Created: 2018/06/10 11:35:05 by qmanamel          #+#    #+#             */
+/*   Updated: 2018/06/10 12:53:29 by qmanamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BULLET_HPP
-#define BULLET_HPP
+#ifndef GAME_CLASS_HPP
+#define GAME_CLASS_HPP
 
-#include "GameEntity.class.hpp"
+#include "Bullet.class.hpp"
+#include "Player.class.hpp"
 
-class Bullet: public GameEntity{
+class Game {
 public:
-    Bullet(void);
-    Bullet(Bullet const&_new);
-    ~Bullet(void);
-    Bullet &operator=(Bullet const&_new);
-    bool getState(void);
-    void makeAlive(void);
-    void remove(void);
-    void moveBullet(WINDOW *win, int x, int y);
+    Game(void);
+    Game(Game const &_new);
+    ~Game(void);
+    Game &operator=(Game const &_new);
+    void    addBullet(WINDOW *win, Player &_player);
+    void    moveBullets(WINDOW *win);
 private:
-    bool    isActive;
+    Bullet  *_bullets;
+    int     _max_bullets;
 };
 
 #endif

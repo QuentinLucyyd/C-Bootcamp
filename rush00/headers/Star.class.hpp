@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Star.class.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: qmanamel <qmanamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/09 20:58:35 by root              #+#    #+#             */
-/*   Updated: 2018/06/09 21:57:54 by root             ###   ########.fr       */
+/*   Updated: 2018/06/10 12:03:51 by qmanamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ public:
     Star(Star const&_new);
     ~Star(void);
     Star &operator=(Star const&_new);
-    void moveStar(WINDOW *win, int direction);    
+    void moveStar(WINDOW *win);    
 };
 
 #endif

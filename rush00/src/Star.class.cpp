@@ -6,7 +6,7 @@
 /*   By: qmanamel <qmanamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/09 21:04:05 by root              #+#    #+#             */
-/*   Updated: 2018/06/10 08:18:13 by qmanamel         ###   ########.fr       */
+/*   Updated: 2018/06/10 12:03:47 by qmanamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ Star &Star::operator=(Star const&_new){
     return (*this);
 }
 
-void Star::moveStar(WINDOW *win, int direction){
+void Star::moveStar(WINDOW *win){
     mvwaddch(win, this->_pos_y, this->_pos_x, ' ');
     this->_pos_y += 1;
     mvwaddch(win, this->_pos_y, this->_pos_x, '.');

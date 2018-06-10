@@ -6,13 +6,17 @@
 /*   By: qmanamel <qmanamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/09 08:28:33 by qmanamel          #+#    #+#             */
-/*   Updated: 2018/06/09 08:53:44 by qmanamel         ###   ########.fr       */
+/*   Updated: 2018/06/10 08:34:11 by qmanamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/Screen.class.hpp"
 
 Screen::Screen(void){return ;}
+
+Screen::Screen(WINDOW *_win){
+    this->_screen = _win;
+}
 
 Screen::Screen(Screen const &_new){
     *this = _new;

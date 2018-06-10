@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: qmanamel <qmanamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 19:18:47 by qmanamel          #+#    #+#             */
-/*   Updated: 2018/06/10 06:07:59 by root             ###   ########.fr       */
+/*   Updated: 2018/06/10 08:42:58 by qmanamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,10 @@ void    initialize(void){
     curs_set(FALSE);
 }
 
-int     main(int argc, char *argv[]) {
+int     main(int argc, char *argv[]) {  
     int parent_x, parent_y;
     int score_size = 10;
-    initscr();
-    noecho();
-    curs_set(FALSE);
+    initialize();
     getmaxyx(stdscr, parent_y, parent_x);
     WINDOW *field = newwin(parent_y - score_size, parent_x, 0, 0);
     WINDOW *score = newwin(score_size, parent_x, parent_y - score_size, 0);

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   GameEntity.class.cpp                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: qmanamel <qmanamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 21:04:51 by root              #+#    #+#             */
-/*   Updated: 2018/06/09 19:59:20 by root             ###   ########.fr       */
+/*   Updated: 2018/06/10 08:20:33 by qmanamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/GameEntity.class.hpp"
 
-GameEntity::GameEntity(void): _pos_x(0), _pos_y(0), _hitPoints(1){
+GameEntity::GameEntity(void): _pos_x(0), _pos_y(0), _hitPoints(3){
     return ;
 }
 

@@ -21,6 +21,14 @@
         "streambuf": "cpp",
         "type_traits": "cpp",
         "typeinfo": "cpp",
-        "cmath": "cpp"
+        "cmath": "cpp",
+        "locale": "cpp",
+        "bitset": "cpp",
+        "iterator": "cpp",
+        "string": "cpp",
+        "string_view": "cpp",
+        "utility": "cpp",
+        "__config": "cpp",
+        "__nullptr": "cpp"
     }
 }

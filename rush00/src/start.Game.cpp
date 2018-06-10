@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start.Game.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: qmanamel <qmanamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 21:30:39 by root              #+#    #+#             */
-/*   Updated: 2018/06/10 06:46:04 by root             ###   ########.fr       */
+/*   Updated: 2018/06/10 08:48:36 by qmanamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,20 +60,29 @@ void    moveDown(WINDOW *win, Player &_player, int max_y) {
 } 
 
 int    checkCollision(WINDOW *win, Player &_player) {
-    chtype next = mvwinch(win, _player.getY() - 1, _player.getX() + 2);
-    char n = (next & A_CHARTEXT);
-    if (n == ' '){
-        mvwaddstr(win, 5, 5, "No Collission");
+    chtype left_wing = mvwinch(win, _player.getY() - 1, _player.getX());
+    chtype right_wing = mvwinch(win, _player.getY() - 1, _player.getX() + 4);
+    chtype center = mvwinch(win, _player.getY() - 1, _player.getX() + 2);
+    char n_left = (left_wing & A_CHARTEXT);
+    char n_right = (right_wing & A_CHARTEXT);
+    char n_center = (right_wing & A_CHARTEXT);
+    if (n_left == ' ' && n_right == ' ' && n_center == ' '){
+        //mvwaddstr(win, 5, 5, "No Collission");
         return 1;
     } else {
-        if (n != '.' && n != '*' && n != '+'){
+        if ((n_left != '.' && n_left != '*' && n_left != '+') && 
+        (n_right != '.' && n_right != '*' && n_right != '+') && 
+        (n_center != '.' && n_center != '*' && n_center != '+')){
             if (_player.getHP() == 0) {
-                _player.notTail(win, 5);
+                mvwaddstr(win, 5, 5, "Now He is Finally Dead");
+                _player.notTail(win, 6);
+                return -1;
             } else {
                 _player.takeDamage(1);
             }
         }
     }
+    return 1;
 }
 
 void    startGame(WINDOW *win, WINDOW *score) {
@@ -140,7 +149,7 @@ void    startGame(WINDOW *win, WINDOW *score) {
         checkCollision(win,_player);
         //mvwprintw(win, 5, 1, std::to_string(_player.isAlive()).c_str());
         //mvwprintw(win, 6, 1, std::to_string(_player.getHP()).c_str());
-        mvwprintw(win, 20, 1, std::to_string(max_x).c_str());
+        //mvwprintw(win, 20, 1, std::to_string(max_x).c_str());
         if (_player.isAlive()) {
             switch(keyPressed) {
                 case 'z':
@@ -164,7 +173,9 @@ void    startGame(WINDOW *win, WINDOW *score) {
         Frame++;
         mvwprintw(score, 4, 2, "Frames Rendered: ");
         mvwprintw(score, 4, 19, std::to_string(Frame).c_str());
-        usleep(150000);
+        mvwprintw(score, 6, 2, "Lives: ");
+        mvwprintw(score, 6, 9, std::to_string(_player.getHP()).c_str());
+        usleep(90000);
         box(win, '+', '+');
         wrefresh(win);
         wrefresh(score);

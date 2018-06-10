@@ -6,7 +6,7 @@
 /*   By: qmanamel <qmanamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/09 08:24:30 by qmanamel          #+#    #+#             */
-/*   Updated: 2018/06/09 08:53:05 by qmanamel         ###   ########.fr       */
+/*   Updated: 2018/06/10 08:33:37 by qmanamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 class Screen{
     public:
         Screen(void);
+        Screen(WINDOW *_win);
         Screen(Screen const &_new);
         ~Screen(void);
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Enemy.class.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: qmanamel <qmanamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/09 11:14:24 by qmanamel          #+#    #+#             */
-/*   Updated: 2018/06/10 06:24:06 by root             ###   ########.fr       */
+/*   Updated: 2018/06/10 08:54:56 by qmanamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,13 @@ void Enemy::moveEnemy(WINDOW *win, int max_x, int max_y, int speed) {
     } else {
         this->setY(this->_pos_y + speed);
     }
-    mvwprintw(win, 10, 10, std::to_string(this->_pos_x).c_str());
-    chtype left_end = mvwinch(win, this->_pos_y, this->_pos_x-1);
-    chtype right_end = mvwinch(win, this->_pos_y, this->_pos_x+5);
+    //mvwprintw(win, 10, 10, std::to_string(this->_pos_x).c_str());
+    chtype left_end = mvwinch(win, this->_pos_y, this->_pos_x -1);
+    chtype right_end = mvwinch(win, this->_pos_y, this->_pos_x + 5);
     char nl = (left_end & A_CHARTEXT);
     char nr = (right_end & A_CHARTEXT);
+    mvwaddch(win, 20, 10, nl);
+    mvwaddch(win, 10, 20, nr);
     if (this->_pos_x + 4 < max_x && this->_pos_x > 0 && nl != '>' && nr != '<') {
         mvwprintw(win, this->_pos_y, this->_pos_x, this->_display.c_str());
     }

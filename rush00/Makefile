@@ -6,7 +6,7 @@
 #    By: qmanamel <qmanamel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/10 11:52:30 by qmanamel          #+#    #+#              #
-#    Updated: 2018/06/10 12:38:07 by qmanamel         ###   ########.fr        #
+#    Updated: 2018/06/10 15:35:05 by qmanamel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME        := ft_retro
 
 # Define all the compiling and linking flags.
 CXX         := clang++
-CXXFLAGS    := -Wall 
+CXXFLAGS    := -Wall -Wextra -Werror
 LNK         := -lncurses
 
 # Folders

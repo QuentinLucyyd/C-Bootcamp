@@ -6,7 +6,7 @@
 /*   By: qmanamel <qmanamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 11:41:26 by qmanamel          #+#    #+#             */
-/*   Updated: 2018/06/10 13:28:13 by qmanamel         ###   ########.fr       */
+/*   Updated: 2018/06/10 15:30:17 by qmanamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 Game::Game(void){
     this->_bullets = new Bullet[50];
+    this->_stars = new Star[50];
     this->_max_bullets = 50;
+    this->_max_stars = 50;
 }
 
 Game::Game(Game const &_new){
@@ -41,7 +43,8 @@ void    Game::addBullet(WINDOW *win, Player &_player) {
     }
 }
 
-void    Game::moveBullets(WINDOW *win){
+
+void    Game::moveBullets(WINDOW *win) {
     int i = -1;
     chtype  collisionCheck;
     char    nextColide;
@@ -60,4 +63,42 @@ void    Game::moveBullets(WINDOW *win){
             }
         }
     }
+}
+
+void    Game::moveStars(WINDOW *win, int maxX, int maxY) {
+    int i = -1;
+        while(++i < this->_max_stars) {
+            mvwaddch(win, this->_stars[i].getY(), this->_stars[i].getX(), ' ');
+            if (this->_stars[i].getY() > maxY) {
+                this->_stars[i].setY(1);
+            }
+            this->_stars[i].setY(this->_stars[i].getY() + 1);
+            mvwaddch(win, this->_stars[i].getY(),this->_stars[i] .getX(), '.');
+            }
+}
+
+void    Game::setStars(int maxX, int maxY){
+    int i = -1;
+    while(++i < this->_max_stars) {
+        int randomx = rand() % maxX -1;
+        int randomy = rand() % maxY -1;
+        this->_stars[i].setX(randomx);
+        this->_stars[i].setY(randomy);
+    }
+}
+
+void    Game::setScoreBoard(WINDOW *win) {
+    this->scoreBoard = win;
+}
+
+void    Game::setMainScreen(WINDOW *win) {
+    this->mainScreen = win;
+}
+
+WINDOW  *Game::getMainScreen(void) {
+    return (this->mainScreen);
+}
+
+WINDOW  *Game::getScoreBoard(void){
+    return (this->scoreBoard);
 }

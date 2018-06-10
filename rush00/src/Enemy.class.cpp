@@ -6,7 +6,7 @@
 /*   By: qmanamel <qmanamel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/09 11:14:24 by qmanamel          #+#    #+#             */
-/*   Updated: 2018/06/10 14:09:11 by qmanamel         ###   ########.fr       */
+/*   Updated: 2018/06/10 14:19:15 by qmanamel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@ bool Enemy::checkBullet(WINDOW *win) {
     chtype f4 = mvwinch(win, this->_pos_y + 1, this->_pos_x + 4);
     chtype f5 = mvwinch(win, this->_pos_y + 1, this->_pos_x + 5);
 
+    chtype fc1 = mvwinch(win, this->_pos_y, this->_pos_x);
+    chtype fc2 = mvwinch(win, this->_pos_y, this->_pos_x + 2);
+    chtype fc3 = mvwinch(win, this->_pos_y, this->_pos_x + 3);
+    chtype fc4 = mvwinch(win, this->_pos_y, this->_pos_x + 4);
+    chtype fc5 = mvwinch(win, this->_pos_y, this->_pos_x + 5);
 
     char cf1 = (f1 & A_CHARTEXT);
     char cf2 = (f2 & A_CHARTEXT);
@@ -51,7 +56,13 @@ bool Enemy::checkBullet(WINDOW *win) {
     char cf4 = (f4 & A_CHARTEXT);
     char cf5 = (f5 & A_CHARTEXT);
     
-    if (cf1 == '*' || cf2 == '*' || cf3 == '*' || cf4 == '*' || cf5 == '*') {
+    char cfc1 = (fc1 & A_CHARTEXT);
+    char cfc2 = (fc2 & A_CHARTEXT);
+    char cfc3 = (fc3 & A_CHARTEXT);
+    char cfc4 = (fc4 & A_CHARTEXT);
+    char cfc5 = (fc5 & A_CHARTEXT);
+    if (cf1 == '*' || cf2 == '*' || cf3 == '*' || cf4 == '*' || cf5 == '*' ||
+        cfc1 == '*' || cfc2 == '*' || cfc3 == '*' || cfc4 == '*' || cfc5 == '*') {
         return true; 
     }
     return false;
